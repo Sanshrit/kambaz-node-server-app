@@ -42,9 +42,6 @@ export default function UserRoutes(app) {
         if (currentUser) {
             req.session["currentUser"] = currentUser;
             res.json(currentUser);
-            console.log('Session after login:', req.session);
-            console.log('Session ID:', req.sessionID);
-            console.log('Cookie settings:', req.sessionStore);
         } else {
             res.status(401).json({ message: "Unable to login. Try again later." });
         }
@@ -63,10 +60,6 @@ export default function UserRoutes(app) {
             res.sendStatus(401);
             return;
         }
-        console.log('Profile request - Session:', req.session);
-        console.log('Profile request - SessionID:', req.sessionID);
-        console.log('Profile request - Headers:', req.headers.cookie);
-
         res.json(currentUser);
     };
     const findCoursesForEnrolledUser = (req, res) => {
