@@ -11,6 +11,7 @@ export function findCoursesForEnrolledUser(userId) {
 }
 export function createCourse(course) {
     const newCourse = { ...course, _id: uuidv4() };
+    newCourse.image = "course.jpg"
     Database.courses = [...Database.courses, newCourse];
     return newCourse;
 }
