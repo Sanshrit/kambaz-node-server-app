@@ -33,6 +33,12 @@ app.use(session(sessionOptions));
 
 
 app.use(express.json());
+app.use((req, res, next) => {
+    console.log(`🌐 ${new Date().toISOString()} - ${req.method} ${req.url}`);
+    console.log(`🍪 Cookies: ${req.headers.cookie || 'NO COOKIES'}`);
+    console.log(`🎯 Session ID: ${req.sessionID || 'NO SESSION ID'}`);
+    next();
+});
 UserRoutes(app)
 CourseRoutes(app);
 ModuleRoutes(app);
