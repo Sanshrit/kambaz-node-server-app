@@ -99,10 +99,10 @@ export default function UserRoutes(app) {
             res.sendStatus(401);
             return;
         }
-        console.log("=== BACKEND DEBUG ===");
-        console.log("currentUser.role:", currentUser.role);
+        // console.log("=== BACKEND DEBUG ===");
+        // console.log("currentUser.role:", currentUser.role);
         if (currentUser.role === "ADMIN") {
-            console.log("Taking ADMIN path");
+            // console.log("Taking ADMIN path");
             const courses = await courseDao.findAllCourses();
             res.json(courses);
             return;
@@ -111,11 +111,11 @@ export default function UserRoutes(app) {
         if (uid === "current") {
             uid = currentUser._id;
         }
-        console.log("uid parameter:", uid);
-    console.log("About to call enrollmentsDao.findCoursesForUser");
+        // console.log("uid parameter:", uid);
+    // console.log("About to call enrollmentsDao.findCoursesForUser");
         const courses = await enrollmentsDao.findCoursesForUser(uid);
-        console.log("DAO returned courses:", courses);
-    console.log("DAO returned courses length:", courses.length);
+        // console.log("DAO returned courses:", courses);
+    // console.log("DAO returned courses length:", courses.length);
         res.json(courses);
     };
 
