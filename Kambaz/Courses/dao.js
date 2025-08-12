@@ -1,5 +1,6 @@
 // import Database from "../Database/index.js";
 import model from "./model.js";
+import EnrollmentModel from "../Enrollments/model.js";
 import { v4 as uuidv4 } from "uuid";
 export function findAllCourses() {
     return model.find();
@@ -16,7 +17,8 @@ export function createCourse(course) {
     return model.create(newCourse);
 
 }
-export function deleteCourse(courseId) {
+export async function deleteCourse(courseId) {
+    await EnrollmentModel.deleteMany({ course: courseId });
     return model.deleteOne({ _id: courseId });
 }
 
